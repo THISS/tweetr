@@ -78,6 +78,7 @@
   width: 25px;
   height: 25px;
   margin-right: .5em;
+  filter: grayscale(1);
 }
 /**************************/
 /********* hover **********/
@@ -85,4 +86,8 @@
 
 #tweets-container article:hover .social{
   display: block;
+}
+
+#tweets-container article:hover .social img:hover{
+  filter: grayscale(0.2);
 }

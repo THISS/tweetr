@@ -40,10 +40,30 @@
         <form action="/tweets" method="post">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" class="myButton" value="Tweet">
-          <span class="counter">140</span>
+          <span class="counter"></span>
         </form>
       </section>
       <section id="tweets-container">
+        <script id="tweet-template" type="text/x-handlebars-template">
+          <article>
+            <header class="group">
+              <img src={{avatar}} />
+              <h2>{{userName}}</h2>
+              <h4>{{tagName}}</h4>
+            </header>
+
+            <p>{{tweet}}</p>
+
+            <footer class="group">
+              <h5>{{timestamp}}</h5>
+              <div class="social">
+                <img src="/images/icons/flag.png" />
+                <img src="/images/icons/share.png" />
+                <img src="/images/icons/heart.png" />
+              </div>
+            </footer>
+          </article>
+        </script>
       </section>
     </main>
   </body>
