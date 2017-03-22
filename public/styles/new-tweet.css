@@ -68,3 +68,9 @@ section.new-tweet .counter {
 .warning-text-count {
 	color: red;
 }
+
+.error {
+	color: tomato;
+	background-color: orange;
+	padding: .5em;
+}
