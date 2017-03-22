@@ -39,5 +39,12 @@ hr {
   margin-right: auto;
   background-color: #fff;
   padding-top: 140px;
-  padding-bottom: 140px;
+  padding-bottom: 2em;
+ }
+
+/* clearfix */
+ .group:after {
+  content: "";
+  display: table;
+  clear: both;
  }
