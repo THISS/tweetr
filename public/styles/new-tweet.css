@@ -8,6 +8,8 @@ section.new-tweet {
   background-color: darkgray;
   margin-left: 2em;
   margin-right: 2em;
+	margin-bottom: 2em;
+	display: none;
 }
 
 section.new-tweet textarea {
@@ -68,9 +70,12 @@ section.new-tweet .counter {
 .warning-text-count {
 	color: red;
 }
-
+.error-div {
+	display: none;
+}
 .error {
 	color: tomato;
 	background-color: orange;
 	padding: .5em;
+	display: block;
 }

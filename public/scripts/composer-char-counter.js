@@ -13,4 +13,7 @@ $("document").ready(function(){
       counter.removeClass("warning-text-count");
     }
   });
+  newTweet.find("form").on("submit", function(){
+    counter.text(counterCount);
+  });
 });
