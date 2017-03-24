@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function() {
+  
   // Get our tweets container
   const tweetContainer = $("#tweets-container");
   const templateHtml = $("#tweet-template").html();
@@ -15,6 +16,27 @@ $(document).ready(function() {
   const error = $("<ul></ul>").appendTo(errorDiv);
   newTweet.before(errorDiv);
   const templateScript = Handlebars.compile(templateHtml);
+
+  // Display our Errors
+  function displayError(err) {
+    error.empty();
+    $("<li>").text(err.statusText).appendTo(error);
+    errorDiv.addClass("error");
+  }
+
+  // Check the Form Data integrity
+  function checkFormDataIntegrity(form) {
+    errorDiv.removeClass("error");
+    error.empty();
+    if(!form.find("textarea").val().length) {
+      error.append("<li>You must enter a Tweet before submitting.</li>");
+    }
+    if(Number(form.find(".counter").text()) < 0) {
+      error.append("<li>Your Tweet is too long.</li>");
+    }
+    // if our error has an li child return false
+    return !error.has("li").length;
+  }
 
   // function to create an individual tweet html
   function createTweetElement(tweetObj) {
@@ -40,6 +62,19 @@ $(document).ready(function() {
     tweetContainer.html(arrayOfTweets.map(createTweetElement));
   }
 
+  // Display our tweets
+  function loadTweets() {
+    $.ajax({
+      url: "/tweets",
+      method: "GET",
+      success: function(data){
+        const newest = data.reverse();
+        renderTweets(newest);
+      },
+      error: displayError
+    });
+  }
+
   newTweet.on("submit", function(e){
     e.preventDefault();
     if(checkFormDataIntegrity($(this))) {
@@ -61,41 +96,6 @@ $(document).ready(function() {
       errorDiv.addClass("error");
     }
   });
-
-
-  // Check the Form Data integrity
-  function checkFormDataIntegrity(form) {
-    errorDiv.removeClass("error");
-    error.empty();
-    if(!form.find("textarea").val().length) {
-      error.append("<li>You must enter a Tweet before submitting.</li>");
-    }
-    if(Number(form.find(".counter").text()) < 0) {
-      error.append("<li>Your Tweet is too long.</li>");
-    }
-    // if our error has an li child return false
-    return !error.has("li").length;
-  }
-
-  // Display our tweets
-  function loadTweets() {
-    $.ajax({
-      url: "/tweets",
-      method: "GET",
-      success: function(data){
-        const newest = data.reverse();
-        renderTweets(newest);
-      },
-      error: displayError
-    });
-  }
-
-  // Display our Errors
-  function displayError(err) {
-    error.empty();
-    $("<li>").text(err.statusText).appendTo(error);
-    errorDiv.addClass("error");
-  }
 
   // button toggle for composing a tweet
   $("#nav-bar button").on("click", function() {

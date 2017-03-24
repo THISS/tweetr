@@ -9,6 +9,7 @@
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
     "livereload": "./node_modules/.bin/gulp",
     "dev": "npm run local | npm run livereload",
+    "sass": "node-sass -r ./sass -o ./public/styles",
     "debug": "node --debug=5858 server/index.js"
   },
   "author": "Lighthouse Labs",
@@ -24,6 +25,7 @@
     "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1",
     "gulp-watch": "^4.3.11",
+    "node-sass": "^4.5.1",
     "nodemon": "^1.9.2"
   }
 }
