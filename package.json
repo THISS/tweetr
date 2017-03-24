@@ -8,7 +8,8 @@
     "start": "node server/index.js",
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js",
     "livereload": "./node_modules/.bin/gulp",
-    "dev": "npm run local | npm run livereload"
+    "dev": "npm run local | npm run livereload",
+    "debug": "node --debug=5858 server/index.js"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",

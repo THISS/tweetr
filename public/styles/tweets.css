@@ -80,6 +80,10 @@
   margin-right: .5em;
   filter: grayscale(1);
 }
+
+#tweets-container p {
+  word-wrap: break-word;
+}
 /**************************/
 /********* hover **********/
 /**************************/

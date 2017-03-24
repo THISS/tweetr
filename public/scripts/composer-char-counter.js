@@ -3,6 +3,7 @@ $("document").ready(function(){
   const counter = newTweet.find(".counter");
   const counterCount = 140;
   counter.text(counterCount);
+  counter.attr("x-data-original-count", counterCount);
   newTweet.on("keyup", "textarea", function(){
     const keyCount = $(this).val().length;
     const count = counterCount - keyCount;
@@ -12,8 +13,5 @@ $("document").ready(function(){
     }else {
       counter.removeClass("warning-text-count");
     }
-  });
-  newTweet.find("form").on("submit", function(){
-    counter.text(counterCount - newTweet.find("textarea").val().length);
   });
 });

@@ -8,6 +8,7 @@ $(document).ready(function() {
   const tweetContainer = $("#tweets-container");
   const templateHtml = $("#tweet-template").html();
   const newTweetContainer = $(".new-tweet");
+  const counter = newTweetContainer.find(".counter");
   const newTweet = newTweetContainer.find("form");
   const newText = newTweet.find("textarea");
   const errorDiv = $("<div class='error-div'></div>");
@@ -54,6 +55,7 @@ $(document).ready(function() {
       .done(function(data){
         loadTweets();
         newText.val('').focus();
+        counter.text(counter.attr("x-data-original-count"));
       });
     }else {
       errorDiv.addClass("error");
