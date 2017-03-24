@@ -1,0 +1,21 @@
+@mixin box-shadow($type, $top, $right, $down, $left, $color) {
+  -moz-box-shadow:$type $top $right $down $left $color;
+  -webkit-box-shadow:$type $top $right $down $left $color;
+  box-shadow:$type $top $right $down $left $color;
+}
+
+@mixin background-gradient($colorStart, $colorEnd) {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, $colorStart), color-stop(1, $colorEnd));
+	background:-moz-linear-gradient(top, $colorStart 5%, $colorEnd 100%);
+	background:-webkit-linear-gradient(top, $colorStart 5%, $colorEnd 100%);
+	background:-o-linear-gradient(top, $colorStart 5%, $colorEnd 100%);
+	background:-ms-linear-gradient(top, $colorStart 5%, $colorEnd 100%);
+	background:linear-gradient(to bottom, $colorStart 5%, $colorEnd 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+}
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}

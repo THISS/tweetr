@@ -1,97 +1,91 @@
-#tweets-container article {
-  border: 1px solid lightgrey;
-  border-radius: 15px;
-  background-color: #fff;
-  margin-right: 2em;
-  margin-left: 2em;
-  margin-bottom: 2em;
-  overflow: hidden;
-}
-
-#tweets-container article header {
-  background-color: #eee;
-  padding: .5em;
-  opacity: 0.8;
-}
-
-#tweets-container article:hover header {
-  opacity: 1;
-}
-
-#tweets-container article header img {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  float: left;
-  background-color: #fff;
-}
-
-#tweets-container article header h2 {
-  color: #555;
-  float: left;
-  margin-left: .5em;
-  line-height: 150%;
-  font-weight: 700;
-  font-size: 2em;
-}
-
-#tweets-container article header h4 {
-  color: #777;
-  font-weight: lighter;
-  float: right;
-  line-height: 20%;
-  font-size: 1.1em;
-}
-
-#tweets-container article p {
-  padding: .5em;
-  font-size: 1.3em;
-}
-
-#tweets-container article hr {
-  border-color: #eee;
-  margin: 0;
-}
-
-#tweets-container article footer {
-  padding: 0;
-  border-top: 1px lightgrey solid;
-  height: 3em;
-}
-
-#tweets-container article footer h5 {
-  padding: 0;
-  padding-left: .5em;
-  font-weight: 300;
-  font-size: 1em;
-  line-height: 20%;
-  float: left;
-}
-
 #tweets-container .social {
   float: right;
   margin-top: 1em;
   display: none;
-}
-
-#tweets-container .social img {
-  width: 25px;
-  height: 25px;
-  margin-right: .5em;
-  filter: grayscale(1);
+  
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: .5em;
+    filter: grayscale(1);
+  }
 }
 
 #tweets-container p {
   word-wrap: break-word;
 }
-/**************************/
-/********* hover **********/
-/**************************/
 
-#tweets-container article:hover .social{
-  display: block;
-}
+#tweets-container article {
+  border: 1px solid $cNavButtonText;
+  border-radius: 15px;
+  background-color: $cMainWhite;
+  margin-right: 2em;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  overflow: hidden;
+  
+  /**************************/
+  /********* hover **********/
+  /**************************/
+  &:hover header {
+    opacity: 1;
+  }
+  &:hover .social{
+    display: block;
+    
+    img:hover{
+      filter: grayscale(0.2);
+    }
+  }
+  header {
+    background-color: $cBodyWhite;
+    padding: .5em;
+    opacity: 0.8;
 
-#tweets-container article:hover .social img:hover{
-  filter: grayscale(0.2);
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      float: left;
+      background-color: $cMainWhite;
+    }
+
+    h2 {
+      color: $cMidGray;
+      float: left;
+      margin-left: .5em;
+      line-height: 150%;
+      font-weight: 700;
+      font-size: 2em;
+    }
+    h4 {
+      color: $cLightMidGray;
+      font-weight: lighter;
+      float: right;
+      line-height: 20%;
+      font-size: 1.1em;
+    }
+  }
+  p {
+    padding: .5em;
+    font-size: 1.3em;
+  }
+  hr {
+    border-color: $cBodyWhite;
+    margin: 0;
+  }
+  footer {
+    padding: 0;
+    border-top: 1px $cMidGray solid;
+    height: 3em;
+    
+    h5 {
+      padding: 0;
+      padding-left: .5em;
+      font-weight: 300;
+      font-size: 1em;
+      line-height: 20%;
+      float: left;
+    }
+  }
 }

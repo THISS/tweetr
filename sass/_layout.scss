@@ -16,8 +16,8 @@ html {
 
 body {
   margin: 0;
-  color: #244751;
-  background-color: #eee;
+  color: $cText;
+  background-color: $cBodyWhite;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -27,7 +27,7 @@ h2 {
 
 hr {
   margin: 0 0 1em 0;
-  border-color: #999;
+  border-color: $cHorizontalRule;
 }
 
 /*
@@ -37,7 +37,7 @@ hr {
   width: 450px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
+  background-color: $cMainWhite;
   padding-top: 140px;
   padding-bottom: 2em;
  }
