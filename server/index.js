@@ -15,17 +15,6 @@ let db;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// Cleanup code
-function cleanup(serverExpress, mongoDB) {
-  return function() {
-    console.log("Shutting down server...");
-    serverExpress.close();
-    console.log("Shutting down DB connection");
-    mongoDB.close();
-    console.log("Shutdown Complete.");
-  };
-}
-
 // The in-memory database of tweets. It's a basic object with an array in it.
 // const db = require("./lib/in-memory-db");
 MongoClient.connect(MONGODB_URI, (err, dbase) => {
@@ -47,6 +36,4 @@ MongoClient.connect(MONGODB_URI, (err, dbase) => {
   server.listen(PORT, () => {
     console.log("Example app listening on port " + server.address().port);
   });
-  process.on('SIGINT', cleanup(server, db));
-  process.on('SIGTERM', cleanup(server, db));
 });
