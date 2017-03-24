@@ -1,7 +1,6 @@
 "use strict";
 
 // Basic express setup:
-
 const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
@@ -14,22 +13,22 @@ let server;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Cleanup code
+function cleanup(serverExpress, mongoDB) {
+  return function() {
+    serverExpress.close();
+    mongoDB.close();
+  };
+}
+
 // The in-memory database of tweets. It's a basic object with an array in it.
 // const db = require("./lib/in-memory-db");
-
-
-// The `data-helpers` module provides an interface to the database of tweets.
-// This simple interface layer has a big benefit: we could switch out the
-// actual database it uses and see little to no changes elsewhere in the code
-// (hint hint).
-//
 MongoClient.connect(MONGODB_URI, (err, dbase) => {
   if (err) {
     console.log(`Failed to connect: ${MONGODB_URI}`);
     throw err;
   }
   db = dbase;
-  // Because it exports a function that expects the `db` as a parameter, we can
   // require it and pass the `db` parameter immediately:
   const DataHelpers = require("./lib/data-helpers-mongo.js")(db);
 
@@ -46,11 +45,3 @@ MongoClient.connect(MONGODB_URI, (err, dbase) => {
   process.on('SIGINT', cleanup(server, db));
   process.on('SIGTERM', cleanup(server, db));
 });
-
-// Cleanup code
-function cleanup(serverExpress, mongoDB) {
-  return function() {
-    serverExpress.close();
-    mongoDB.close();
-  }
-}

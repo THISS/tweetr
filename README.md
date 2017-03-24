@@ -34,6 +34,7 @@ Dependencies:
 
 - It is running in our Vagrant machine (and therefore...)
 - It is Running with Node 5.10.x or above
+- read the README.md inside of server folder to set up mongo
 
 
 
