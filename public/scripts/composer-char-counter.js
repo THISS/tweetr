@@ -14,6 +14,6 @@ $("document").ready(function(){
     }
   });
   newTweet.find("form").on("submit", function(){
-    counter.text(counterCount);
+    counter.text(counterCount - newTweet.find("textarea").val().length);
   });
 });

@@ -45,15 +45,15 @@ $(document).ready(function() {
       $.ajax({
         url: "/tweets",
         method: "POST",
-        data: $(this).serialize()
+        data: $(this).serialize(),
+        error: function(error) {
+          newText.focus();
+          displayError(error);
+        }
       })
       .done(function(data){
         loadTweets();
         newText.val('').focus();
-      })
-      .fail(function(err) {
-        newText.val('').focus();
-        displayError(err.error);
       });
     }else {
       errorDiv.addClass("error");
@@ -91,7 +91,7 @@ $(document).ready(function() {
   // Display our Errors
   function displayError(err) {
     error.empty();
-    $("li").text(err.error).appendTo(error);
+    $("<li>").text(err.statusText).appendTo(error);
     errorDiv.addClass("error");
   }
 

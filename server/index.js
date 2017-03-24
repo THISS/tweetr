@@ -29,6 +29,14 @@ const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use("/tweets", tweetsRoutes);
 
-app.listen(PORT, () => {
+const serverExpress = app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+// Cleanup code
+function cleanup(serverExpress, mongoDB) {
+  serverExpress.close();
+  mongoDB.close();
+}
+process.on('SIGINT', cleanup);
+process.on('SIGTERM', cleanup);
